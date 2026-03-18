@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flood Risk Forecast</title>
+    <link rel="stylesheet" href="/static/styles.css?v=10" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+  </head>
+  <body class="has-assistant">
+    <main class="shell">
+      <nav class="top-nav" aria-label="Main navigation">
+        <a href="/flood-risk">Flood Risk Forecast</a>
+        <a href="/">Weather</a>
+        <a href="/social">Social</a>
+      </nav>
+
+      <section class="hero">
+        <p class="eyebrow">Open-Meteo flood + weather</p>
+        <h1>Flood Risk Forecast</h1>
+        <p class="lead">
+          Enter an address and choose historical date or current forecast to
+          compute a flood-risk score using river discharge, precipitation, and
+          weather severity.
+        </p>
+      </section>
+
+      <section class="card">
+        <form id="flood-form" class="form flood-form">
+          <label class="field">
+            <span>Address</span>
+            <input
+              name="address"
+              type="text"
+              placeholder="e.g. 1600 Amphitheatre Parkway, Mountain View"
+              required
+            />
+          </label>
+
+          <label class="field">
+            <span>Mode</span>
+            <select name="mode" id="mode" required>
+              <option value="forecast">Current forecast</option>
+              <option value="historical">Historical data</option>
+            </select>
+          </label>
+
+          <label class="field" id="date-field" hidden>
+            <span>Historical Date</span>
+            <input name="date_str" id="date-input" type="date" />
+          </label>
+
+          <button type="submit">Get flood risk</button>
+        </form>
+
+        <div id="status" class="status" role="status" aria-live="polite"></div>
+        <div id="result" class="result" aria-live="polite"></div>
+        <div id="evac-map" class="evac-map" hidden></div>
+      </section>
+
+      <aside class="card assistant-card" aria-label="AI assistant">
+        <h2>AI Assistant</h2>
+        <p class="assistant-lead">Ask questions about weather, flood risk, or using this site.</p>
+
+        <div id="assistant-messages" class="assistant-messages" aria-live="polite">
+          <div class="assistant-message assistant-message--ai">
+            Hi! Ask me anything about using this weather and flood-risk app.
+          </div>
+        </div>
+
+        <form id="assistant-form" class="assistant-form">
+          <label class="field">
+            <span>Your question</span>
+            <input
+              id="assistant-input"
+              name="message"
+              type="text"
+              maxlength="2000"
+              placeholder="e.g. Is forecast mode better than historical mode?"
+              required
+            />
+          </label>
+          <button id="assistant-submit" type="submit">Ask AI</button>
+        </form>
+      </aside>
+    </main>
+
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+    <script src="/static/flood.js?v=2"></script>
+    <script src="/static/assistant.js?v=1"></script>
+  </body>
+</html>

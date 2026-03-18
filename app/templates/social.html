@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Social</title>
+    <link rel="stylesheet" href="/static/styles.css?v=10" />
+  </head>
+  <body class="has-assistant">
+    <main class="shell">
+      <nav class="top-nav" aria-label="Main navigation">
+        <a href="/flood-risk">Flood Risk Forecast</a>
+        <a href="/">Weather</a>
+        <a href="/social">Social</a>
+      </nav>
+
+      <section class="hero">
+        <p class="eyebrow">Community</p>
+        <h1>Social</h1>
+        <p class="lead">Share updates with others by posting in Questions, Experiences, Feedback, or Help.</p>
+      </section>
+
+      <section class="card social-card">
+        <div class="social-tabs" role="tablist" aria-label="Social tabs">
+          <button class="social-tab active" data-tab="Help" role="tab">Help</button>
+          <button class="social-tab" data-tab="Experiences" role="tab">Experiences</button>
+          <button class="social-tab" data-tab="Feedback" role="tab">Feedback</button>
+          <button class="social-tab" data-tab="Questions" role="tab">Questions</button>
+        </div>
+
+        <form id="social-form" class="social-form">
+          <label class="field social-field">
+            <span>Write a post</span>
+            <textarea id="social-message" name="message" rows="4" placeholder="Type your message and publish it to this tab..." required></textarea>
+          </label>
+          <button type="submit">Publish</button>
+        </form>
+
+        <div class="social-sort-bar">
+          <label class="social-sort-label" for="social-sort-select">Sort by</label>
+          <select id="social-sort-select" class="social-sort-select" aria-label="Sort social posts">
+            <option value="likes">Likes</option>
+            <option value="replies">Replies</option>
+          </select>
+        </div>
+
+        <div id="social-status" class="status" role="status" aria-live="polite"></div>
+        <div id="social-posts" class="result" aria-live="polite"></div>
+      </section>
+
+      <aside class="card assistant-card" aria-label="AI assistant">
+        <h2>AI Assistant</h2>
+        <p class="assistant-lead">Ask questions about weather, flood risk, or using this site.</p>
+
+        <div id="assistant-messages" class="assistant-messages" aria-live="polite">
+          <div class="assistant-message assistant-message--ai">
+            Hi! Ask me anything about using this weather and flood-risk app.
+          </div>
+        </div>
+
+        <form id="assistant-form" class="assistant-form">
+          <label class="field">
+            <span>Your question</span>
+            <input
+              id="assistant-input"
+              name="message"
+              type="text"
+              maxlength="2000"
+              placeholder="e.g. How can I use Social posts for local alerts?"
+              required
+            />
+          </label>
+          <button id="assistant-submit" type="submit">Ask AI</button>
+        </form>
+      </aside>
+    </main>
+
+    <script src="/static/social.js?v=10"></script>
+    <script src="/static/assistant.js?v=1"></script>
+  </body>
+</html>

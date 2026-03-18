@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather by Location + Date</title>
+    <link rel="stylesheet" href="/static/styles.css?v=10" />
+  </head>
+  <body class="has-assistant">
+    <main class="shell">
+      <nav class="top-nav" aria-label="Main navigation">
+        <a href="/flood-risk">Flood Risk Forecast</a>
+        <a href="/">Weather</a>
+        <a href="/social">Social</a>
+      </nav>
+
+      <section class="hero">
+        <p class="eyebrow">Open-Meteo forecast</p>
+        <h1>Plan for a date, anywhere.</h1>
+        <p class="lead">
+          Enter an address and date to fetch the daily forecast, with max/min
+          temperature, precipitation, and wind.
+        </p>
+      </section>
+
+      <section class="card">
+        <form id="weather-form" class="form">
+          <label class="field">
+            <span>Address</span>
+            <input
+              name="location"
+              type="text"
+              placeholder="e.g. 221B Baker Street, London"
+              required
+            />
+          </label>
+          <label class="field">
+            <span>Date</span>
+            <input name="date_str" type="date" required />
+          </label>
+          <button type="submit">Get weather</button>
+        </form>
+
+        <div id="status" class="status" role="status" aria-live="polite"></div>
+        <div id="result" class="result" aria-live="polite"></div>
+      </section>
+
+      <aside class="card assistant-card" aria-label="AI assistant">
+        <h2>AI Assistant</h2>
+        <p class="assistant-lead">Ask questions about weather, flood risk, or using this site.</p>
+
+        <div id="assistant-messages" class="assistant-messages" aria-live="polite">
+          <div class="assistant-message assistant-message--ai">
+            Hi! Ask me anything about using this weather and flood-risk app.
+          </div>
+        </div>
+
+        <form id="assistant-form" class="assistant-form">
+          <label class="field">
+            <span>Your question</span>
+            <input
+              id="assistant-input"
+              name="message"
+              type="text"
+              maxlength="2000"
+              placeholder="e.g. How do I check flood risk for next week?"
+              required
+            />
+          </label>
+          <button id="assistant-submit" type="submit">Ask AI</button>
+        </form>
+      </aside>
+    </main>
+
+    <script src="/static/app.js?v=3"></script>
+    <script src="/static/assistant.js?v=1"></script>
+  </body>
+</html>
